@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Assignment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: 70px 200px 1fr;
+            grid-template-columns: 75vw 1fr;
+
+        }
+
+        .header {
+            grid-row: 1/2;
+            grid-column: 1/3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .link {
+            color: #3A35AA;
+            text-decoration: none;
+            margin: 0px 10px;
+        }
+
+        .logo {
+            color: #3A35AA;
+        }
+
+        .cards-section {
+            grid-row: 2/4;
+            grid-column: 1/2;
+            padding: 15px;
+        }
+
+        .cards {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .card {
+            margin: 10px;
+            padding: 10px 20px;
+            flex-basis: 25%;
+            background-color: #4D48B2;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .sidebar {
+            grid-row: 2/4;
+            grid-column: 2/3;
+            background-color: #FFECE8;
+            color: #3732A9;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        @media screen and (max-width: 900px) {
+            .cards-section{
+                grid-row: 3/4;
+                grid-column: 1/3;
+            }
+            .sidebar{
+                grid-row: 2/3;
+                grid-column: 1/3;
+            }
+        }
+        @media screen and (max-width:600px){
+            .cards{
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">CSS</h1>
+            <nav class="navbar">
+                <a href="/" class="link">Margin</a>
+                <a href="/" class="link">Padding</a>
+                <a href="/" class="link">Border</a>
+            </nav>
+        </header>
+        <section class="cards-section">
+            <h1>Welcome to Grid</h1>
+            <p>
+                CSS Grid Layout excels at dividing a page into major regions or defining the relationship in terms of
+                size, position, and layer, between parts of a control built from HTML primitives. </p>
+
+            <p>Like tables, grid layout enables an author to align elements into columns and rows. However, many more
+                layouts are either possible or easier with CSS grid than they were with tables. For example, a grid
+                container's child elements could position themselves so they actually overlap and layer, similar to CSS
+                positioned elements.</p>
+            <section class="cards">
+                <article class="card">
+                    <h2 class="card-heading">Static</h2>
+                    <p class="card-content">
+                        An element with position: static; is not positioned in any special way; it is always positioned
+                        according to the normal flow of the page:
+                    </p>
+                </article>
+                <article class="card">
+                    <h2 class="card-heading">Relative</h2>
+                    <p class="card-content">
+                        Setting the top, right, bottom, and left properties of a relatively-positioned element will
+                        cause it to be adjusted away from its normal position. Other content will not be adjusted to fit
+                        into any gap left by the element.
+                    </p>
+                </article>
+                <article class="card">
+                    <h2 class="card-heading">Absolute</h2>
+                    <p class="card-content">
+                        An element with position: absolute; is positioned relative to the nearest positioned ancestor
+                        (instead of positioned relative to the viewport, like fixed).
+                    </p>
+                </article>
+                <article class="card">
+                    <h2 class="card-heading">Fixed</h2>
+                    <p class="card-content">
+                        An element with position: fixed; is positioned relative to the viewport, which means it always
+                        stays in the same place even if the page is scrolled. The top, right, bottom, and left
+                        properties are used to position the element.
+                    </p>
+                </article>
+                <article class="card">
+                    <h2 class="card-heading">Sticky</h2>
+                    <p class="card-content">
+                        A sticky element toggles between relative and fixed, depending on the scroll position. It is
+                        positioned relative until a given offset position is met in the viewport - then it "sticks" in
+                        place (like position:fixed).
+                    </p>
+                </article>
+            </section>
+        </section>
+        <aside class="sidebar">
+            <h2>Flexbox</h2>
+            <p>
+                The Flexible Box Module, usually referred to as flexbox, was designed as a one-dimensional layout model,
+                and as a method that could offer space distribution between items in an interface and powerful alignment
+                capabilities.
+            </p>
+        </aside>
+    </div>
+</body>
+
+</html>
