@@ -1,0 +1,22 @@
+{
+  "name": "ui-bootcamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o css/ --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrar2204/UI-Bootcamp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abrar2204/UI-Bootcamp/issues"
+  },
+  "homepage": "https://github.com/abrar2204/UI-Bootcamp#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}
