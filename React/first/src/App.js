@@ -1,5 +1,5 @@
-import CustomElement from "./CustomElement";
-import pageElements from "./pageElements";
+import CustomElement from "./components/CustomElement";
+import pageElements from "./data/pageElements";
 import "./App.scss";
 
 function App() {
