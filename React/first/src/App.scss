@@ -1,0 +1,50 @@
+.App {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto;
+}
+
+.col {
+	&-12 {
+		grid-column: span 12;
+	}
+	&-6 {
+		grid-column: span 6;
+	}
+	&-3 {
+		grid-column: span 3;
+	}
+	@media screen and (min-width: 480px) {
+		&-sm-12 {
+			grid-column: span 12;
+		}
+		&-sm-6 {
+			grid-column: span 6;
+		}
+		&-sm-3 {
+			grid-column: span 3;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		&-md-12 {
+			grid-column: span 12;
+		}
+		&-md-6 {
+			grid-column: span 6;
+		}
+		&-md-3 {
+			grid-column: span 3;
+		}
+	}
+	@media screen and (min-width: 1024px) {
+		&-lg-12 {
+			grid-column: span 12;
+		}
+		&-lg-6 {
+			grid-column: span 6;
+		}
+		&-lg-3 {
+			grid-column: span 3;
+		}
+	}
+}
