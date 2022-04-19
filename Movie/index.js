@@ -1,30 +1,28 @@
-const movieList = [
-  {
-    title: "Movie 1",
-    description: "Description 1",
-    imageUrl:
-      "https://static.wikia.nocookie.net/marvel_dc/images/4/4b/Batman_Vol_3_86_Textless.jpg/revision/latest?cb=20200502132734",
-    seats: 54,
-  },
-  {
-    title: "Movie 2",
-    description: "Description 2",
-    imageUrl:
-      "https://static.wikia.nocookie.net/marvel_dc/images/4/4b/Batman_Vol_3_86_Textless.jpg/revision/latest?cb=20200502132734",
-    seats: 60,
-  },
-  {
-    title: "Movie 3",
-    description: "Description 3",
-    imageUrl:
-      "https://static.wikia.nocookie.net/marvel_dc/images/4/4b/Batman_Vol_3_86_Textless.jpg/revision/latest?cb=20200502132734",
-    seats: 65,
-  },
-];
+const apiKey = '7b8c8f8b9689aede3b63d1d563236916';
+const apiLink = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
 
+const fetchMovieData = async () => {
+  try {
+    const res = await fetch(apiLink, { method: 'get' });
+    const data = await res.json();
+    const movieList = data.results.map((movie) => ({
+      title: movie.title,
+      description: movie.overview,
+      releaseDate: movie.release_date,
+      imageUrl: 'https://image.tmdb.org/t/p/w200' + movie.poster_path
+    }))
+    console.log(movieList);
+    addMovieToBanner(movieList[0]);
+    addMovies(movieList);
+  } catch (err) {
+    console.log(err)
+  }
+}
 
-const addMovieToBanner = (index) => {
-  const movie = movieList[index];
+fetchMovieData();
+
+const addMovieToBanner = (movie) => {
+
   const selectedMovieElement = document.querySelector(".selected-movie");
   const selectedMovieImage = selectedMovieElement.querySelector(
     ".selected-movie-image"
@@ -42,26 +40,29 @@ const addMovieToBanner = (index) => {
   selectedMovieImage.setAttribute("src", movie.imageUrl);
   selectedMovieTitle.innerHTML = movie.title;
   selectedMovieDescription.innerHTML = movie.description;
-  selectedMovieSeats.innerHTML = movie.seats;
+  selectedMovieSeats.innerHTML = movie.releaseDate;
 };
-addMovieToBanner(0);
 
-const movies = document.querySelector('.movies');
 
-movieList.forEach((movie,idx)=>{
+const addMovies = (movieList) => {
+  const movies = document.querySelector('.movies');
+
+  movieList.forEach((movie) => {
     const article = document.createElement('article');
+    article.classList.add('movie')
     const figure = document.createElement('figure');
     const figureCaption = document.createElement('figcaption');
-    const image =document.createElement('img');
-    image.setAttribute('src',movie.imageUrl);
+    const image = document.createElement('img');
+    image.src = movie.imageUrl;
     figureCaption.innerHTML = movie.title;
 
     figure.appendChild(image);
     figure.appendChild(figureCaption);
 
     article.appendChild(figure);
-    article.addEventListener('click',()=>{
-        addMovieToBanner(idx)
+    article.addEventListener('click', () => {
+      addMovieToBanner(movie)
     })
     movies.appendChild(article)
-})
+  })
+}
