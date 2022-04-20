@@ -4,10 +4,11 @@ const Movie = ({ movie, setSelectedMovie }) => {
 	return (
 		<article className="movie" onClick={() => setSelectedMovie(movie)}>
 			<img src={movie.imageUrl} alt={movie.title} />
-			<p className="info">
-				{movie.releaseDate.split("-")[0]} / {movie.score}
-			</p>
-			<h4 className="title">{movie.title}</h4>
+
+			<h4 className="title">
+				{movie.title} ({movie.releaseDate.split("-")[0]})
+			</h4>
+			<p className="score">{movie.score}</p>
 		</article>
 	);
 };

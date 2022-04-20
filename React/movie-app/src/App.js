@@ -83,7 +83,7 @@ function App() {
 					<h2>Popular Movies</h2>
 					<div className="search-filter">
 						<input
-							placeholder="Search Movie.."
+							placeholder="Search..."
 							value={filterText}
 							onChange={filterTextHandler}
 						/>

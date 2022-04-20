@@ -8,7 +8,7 @@ const MovieBanner = ({ movie }) => {
 			<div className="info">
 				<h2 className="title">{movie.title}</h2>
 				<div>
-					<p className="score">Score: {movie.score}</p>
+					<p className="score">Score: {movie.score} / 10</p>
 					<p>{movie.releaseDate.split("-")[0]}</p>
 				</div>
 				<p className="description">{movie.description}</p>

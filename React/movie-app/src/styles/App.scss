@@ -157,9 +157,20 @@ button {
 			color: $secondaryColor;
 			margin: 10px 0px;
 		}
+		.score {
+			background-color: #fec72b;
+			font-size: 16px;
+			padding: 5px 8px;
+			border-radius: 1000px;
+			color: black;
+			width: 40px;
+			margin: 10px 0px;
+			text-align: center;
+		}
 		.title {
 			color: $tertiaryColor;
 			font-size: 20px;
+			margin: 10px 0px;
 		}
 	}
 }
