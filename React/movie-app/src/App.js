@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import "./styles/App.css";
+import "./styles/App.scss";
 import { apiLink } from "./apiConfig";
+import Movie from "./components/Movie";
+import MovieBanner from "./components/MovieBanner";
 
 function App() {
 	const [movies, setMovies] = useState([]);
@@ -18,11 +20,14 @@ function App() {
 			try {
 				const res = await fetch(apiLink, { method: "get" });
 				const data = await res.json();
+				console.log(data.results);
 				const movieList = data.results.map((movie) => ({
 					title: movie.title,
 					description: movie.overview,
 					releaseDate: movie.release_date,
+					backDrop: "https://image.tmdb.org/t/p/original" + movie.backdrop_path,
 					imageUrl: "https://image.tmdb.org/t/p/w500" + movie.poster_path,
+					score: movie.vote_average,
 				}));
 				setSelectedMovie(movieList[0]);
 				setMovies(movieList);
@@ -65,46 +70,37 @@ function App() {
 	return (
 		<div className="App">
 			<header className="header">
-				<h1>Movies</h1>
-				<div className="header-components">
-					<input
-						placeholder="Search Movie.."
-						value={filterText}
-						onChange={filterTextHandler}
-					/>
-					<button onClick={sortByAscendingOrder}>A-Z</button>
-					<button onClick={sortByDescendingOrder}>Z-A</button>
-				</div>
+				<h1>Bisney +</h1>
+				<nav>
+					<a href="/">Home</a>
+					<a href="/">Movies</a>
+					<a href="/">Show</a>
+				</nav>
 			</header>
-			<section className="selected-movie">
-				<img
-					className="selected-movie-image"
-					src={selectedMovie.imageUrl}
-					alt={selectedMovie.title}
-				/>
-				<div>
-					<h2 className="selected-movie-title">{selectedMovie.title}</h2>
-					<p className="selected-movie-description">
-						{selectedMovie.description}
-					</p>
-					<p className="selected-movie-release">
-						<strong>Release Date:</strong> {selectedMovie.releaseDate}
-					</p>
+			<MovieBanner movie={selectedMovie} />
+			<section className="popular">
+				<div className="info">
+					<h2>Popular Movies</h2>
+					<div className="search-filter">
+						<input
+							placeholder="Search Movie.."
+							value={filterText}
+							onChange={filterTextHandler}
+						/>
+						<button onClick={sortByAscendingOrder}>A - Z</button>
+						<button onClick={sortByDescendingOrder}>Z - A</button>
+					</div>
 				</div>
-			</section>
-			<section className="movies">
-				{filteredMovies.map((movie, idx) => (
-					<article
-						className="movie"
-						key={idx}
-						onClick={() => setSelectedMovie(movie)}
-					>
-						<figure>
-							<img src={movie.imageUrl} alt={movie.title} />
-							<figcaption>{movie.title}</figcaption>
-						</figure>
-					</article>
-				))}
+
+				<section className="movies">
+					{filteredMovies.map((movie, idx) => (
+						<Movie
+							movie={movie}
+							key={idx}
+							setSelectedMovie={setSelectedMovie}
+						/>
+					))}
+				</section>
 			</section>
 		</div>
 	);
