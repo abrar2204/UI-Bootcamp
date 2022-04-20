@@ -1,13 +1,9 @@
-import CustomElement from "./components/CustomElement";
-import pageElements from "./data/pageElements";
-import "./App.scss";
+import CustomElements from "./components/CustomElements";
 
 function App() {
 	return (
 		<div className="App">
-			{pageElements.map((element) => (
-				<CustomElement {...element} />
-			))}
+			<CustomElements />
 		</div>
 	);
 }
