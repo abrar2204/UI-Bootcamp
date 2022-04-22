@@ -1,6 +1,10 @@
 import React from "react";
+import { useMovie } from "../context/MovieContext";
 
-const MovieBanner = ({ movie }) => {
+const MovieBanner = () => {
+	const {
+		state: { selectedMovie: movie },
+	} = useMovie();
 	return (
 		<section className="selected-movie">
 			<img className="image" src={movie.backDrop} alt={movie.title} />
@@ -9,7 +13,7 @@ const MovieBanner = ({ movie }) => {
 				<h2 className="title">{movie.title}</h2>
 				<div>
 					<p className="score">Score: {movie.score} / 10</p>
-					<p>{movie.releaseDate.split("-")[0]}</p>
+					<p className="release">{movie.releaseDate?.split("-")[0]}</p>
 				</div>
 				<p className="description">{movie.description}</p>
 			</div>

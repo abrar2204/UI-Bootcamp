@@ -37,7 +37,9 @@ button {
 	nav {
 		display: flex;
 		align-items: center;
-
+		@media screen and (max-width: 520px) {
+			display: none;
+		}
 		> a {
 			color: #848892;
 			text-decoration: none;
@@ -86,16 +88,29 @@ button {
 			justify-content: flex-start;
 			align-items: center;
 			margin-bottom: 30px;
-			> * {
+			@media screen and (max-width: 680px) {
+				flex-direction: column;
+				align-items: flex-start;
+				.release {
+					margin-top: 10px;
+				}
+			}
+			.release {
 				font-size: 20px;
-				margin-right: 20px;
 			}
 			.score {
 				background-color: #fec72b;
 				padding: 5px 10px;
 				border-radius: 1000px;
 				color: black;
+				margin-right: 20px;
 			}
+		}
+
+		@media screen and (max-width: 680px) {
+			position: static;
+			width: 100%;
+			border-radius: 10px;
 		}
 	}
 }
@@ -115,6 +130,12 @@ button {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			@media screen and (max-width: 923px) {
+				justify-content: space-between;
+				margin-top: 30px;
+				width: 100%;
+			}
+
 			input {
 				background-color: transparent;
 				outline: none;
@@ -124,6 +145,10 @@ button {
 				margin: 0px 10px;
 				color: white;
 				width: 300px;
+				@media screen and(max-width: 719px) {
+					width: 100%;
+					margin-bottom: 20px;
+				}
 			}
 
 			button {
@@ -136,19 +161,51 @@ button {
 				cursor: pointer;
 				margin: 0px 10px;
 			}
+
+			select {
+				background-color: $secondaryColor;
+				color: white;
+				padding: 8px 15px;
+				border-radius: 10px;
+				cursor: pointer;
+				margin: 0px 10px;
+			}
+
+			@media screen and(max-width: 719px) {
+				flex-direction: column;
+				align-items: flex-start;
+				> * {
+					margin-top: 10px;
+				}
+			}
+		}
+
+		@media screen and (max-width: 923px) {
+			flex-direction: column;
+			align-items: flex-start;
 		}
 	}
 }
 .movies {
-	display: grid;
+	// display: grid;
 	padding: 20px 50px;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: auto;
-	gap: 30px;
+	// grid-template-columns: repeat(5, 1fr);
+	// grid-template-rows: 500px;
+	// gap: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	@media screen and (max-width: 630px) {
+		padding: 20px 10px;
+	}
 	.movie {
 		cursor: pointer;
 		word-wrap: break-word;
-		grid-column: span 1;
+		margin: 0px 15px;
+		// grid-column: span 1;
+		flex-basis: 230px;
+		height: 500px;
 		img {
 			width: 100%;
 			border-radius: 10px;
@@ -171,6 +228,76 @@ button {
 			color: $tertiaryColor;
 			font-size: 20px;
 			margin: 10px 0px;
+		}
+	}
+}
+
+.overlay {
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.3;
+}
+
+.hidden {
+	display: none;
+}
+
+.add-movie-form {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	width: 500px;
+	padding: 20px 30px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	label {
+		width: 80%;
+		margin: 10px 0px;
+	}
+	input {
+		display: block;
+		width: 100%;
+		padding: 5px 10px;
+	}
+
+	button {
+		padding: 10px 20px;
+		background-color: $secondaryColor;
+		color: white;
+		border-radius: 10px;
+		outline: none;
+		border: none;
+	}
+}
+
+.pages {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	button {
+		margin: 0px 10px;
+		padding: 10px;
+		border: 1px solid $secondaryColor;
+		border-radius: 10px;
+		color: $secondaryColor;
+		background-color: $primaryColor;
+		cursor: pointer;
+		&.current {
+			background-color: $secondaryColor;
+			color: white;
+		}
+		&:disabled {
+			border-color: #ffffff20;
+			color: #ffffff20;
 		}
 	}
 }

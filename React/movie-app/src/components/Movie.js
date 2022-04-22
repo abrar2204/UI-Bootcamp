@@ -1,8 +1,12 @@
 import React from "react";
+import { useMovie } from "../context/MovieContext";
 
-const Movie = ({ movie, setSelectedMovie }) => {
+const Movie = ({ movie }) => {
+	const {
+		actions: { selectMovie },
+	} = useMovie();
 	return (
-		<article className="movie" onClick={() => setSelectedMovie(movie)}>
+		<article className="movie" onClick={() => selectMovie(movie)}>
 			<img src={movie.imageUrl} alt={movie.title} />
 
 			<h4 className="title">
